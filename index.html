@@ -1,231 +1,303 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Founder Voice Audit | Turn raw founder notes into content that still sounds real</title>
-  <meta name="description" content="A proof-first founder voice audit for SaaS and expert teams that want publishable content without generic ghostwriting." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Founder Voice Audit | Turn rough founder thinking into content that still sounds human</title>
+  <meta name="description" content="Founder Voice Audit + Sample Rewrite for founder-led SaaS and expert businesses. See the proof before committing to a sprint or retainer.">
   <style>
     :root {
       --bg: #0b1020;
-      --panel: #131a31;
-      --panel-2: #192242;
-      --text: #eef2ff;
-      --muted: #b6c0e0;
+      --panel: #121933;
+      --ink: #f4f7ff;
+      --muted: #b8c2e0;
+      --line: #2a3568;
       --accent: #7c9cff;
-      --accent-2: #89f0d0;
-      --line: rgba(255,255,255,0.12);
-      --shadow: 0 24px 80px rgba(0,0,0,0.35);
+      --accent-2: #9ef0d0;
       --max: 1120px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(124,156,255,0.18), transparent 28%),
-        radial-gradient(circle at left 20%, rgba(137,240,208,0.08), transparent 24%),
-        var(--bg);
-      color: var(--text);
+      color: var(--ink);
+      background: linear-gradient(180deg, #0a0f1f 0%, #111831 100%);
       line-height: 1.6;
     }
     a { color: inherit; }
     .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      color: var(--accent-2);
-      font-size: 14px;
-      letter-spacing: 0.02em;
-    }
     .hero {
-      padding: 72px 0 56px;
+      padding: 72px 0 44px;
+      background: radial-gradient(circle at top right, rgba(124,156,255,.18), transparent 35%), linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .hero-grid {
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid rgba(158,240,208,.35);
+      color: var(--accent-2);
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: .02em;
+      margin-bottom: 18px;
+    }
+    h1, h2, h3 { line-height: 1.15; margin: 0 0 16px; }
+    h1 { font-size: clamp(2.3rem, 6vw, 4.5rem); max-width: 14ch; }
+    h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); }
+    h3 { font-size: 1.1rem; }
+    p.lead { font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--muted); max-width: 62ch; }
+    .hero-grid, .grid-2, .cards, .proof-grid, .proof-stack {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 32px;
-      align-items: stretch;
+      gap: 24px;
     }
-    h1, h2, h3 { line-height: 1.1; margin: 0 0 16px; }
-    h1 { font-size: clamp(2.4rem, 5vw, 4.5rem); letter-spacing: -0.03em; }
-    h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); letter-spacing: -0.02em; }
-    h3 { font-size: 1.15rem; }
-    p { margin: 0 0 16px; color: var(--muted); }
-    .lead {
-      font-size: 1.1rem;
-      max-width: 700px;
-    }
-    .hero-card, .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-    .hero-copy { padding: 12px 0; }
-    .hero-card {
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .hero-grid { grid-template-columns: 1.25fr .9fr; align-items: start; }
+    .panel {
+      background: rgba(18,25,51,.76);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.22);
+      backdrop-filter: blur(10px);
     }
     .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin: 28px 0 16px;
+      gap: 12px;
+      margin: 28px 0 14px;
     }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
+      display: inline-block;
+      padding: 14px 18px;
+      border-radius: 14px;
       text-decoration: none;
       font-weight: 700;
       border: 1px solid transparent;
-      transition: transform .18s ease, opacity .18s ease, border-color .18s ease;
     }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #9b7cff);
-      color: white;
-      box-shadow: 0 14px 30px rgba(124,156,255,0.35);
-    }
-    .btn-secondary {
-      border-color: var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-    }
-    .kpis, .grid-3, .steps, .faq {
-      display: grid;
-      gap: 18px;
-    }
-    .kpis { grid-template-columns: repeat(3, 1fr); margin-top: 26px; }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .steps { grid-template-columns: repeat(4, 1fr); }
-    .faq { grid-template-columns: repeat(2, 1fr); }
-    .stat, .card, .step, .faq-item {
-      padding: 22px;
-      border-radius: 20px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.035);
-    }
-    .stat strong {
-      display: block;
-      font-size: 1.7rem;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 10px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      color: var(--accent-2);
-    }
-    section { padding: 34px 0; }
-    ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    .btn-primary { background: var(--accent); color: #0b1020; }
+    .btn-secondary { border-color: rgba(255,255,255,.18); color: var(--ink); }
+    .meta { color: var(--muted); font-size: .95rem; }
+    section { padding: 56px 0; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .cards { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .proof-grid { grid-template-columns: 1fr 1fr; }
+    .proof-stack { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    ul, ol { padding-left: 18px; }
     li + li { margin-top: 8px; }
-    .checklist { list-style: none; padding: 0; }
-    .checklist li {
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .kpi {
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+    .kpi strong { display: block; font-size: 1.2rem; margin-bottom: 6px; }
+    .steps { counter-reset: step; display: grid; gap: 14px; }
+    .step {
       position: relative;
-      padding-left: 28px;
+      padding: 18px 18px 18px 60px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      background: rgba(255,255,255,.025);
     }
-    .checklist li::before {
-      content: "✓";
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
       position: absolute;
-      left: 0;
-      color: var(--accent-2);
-      font-weight: 800;
+      left: 18px; top: 18px;
+      width: 28px; height: 28px;
+      border-radius: 999px;
+      display: grid; place-items: center;
+      background: var(--accent-2); color: #082419; font-weight: 800;
     }
-    .offer {
-      border: 1px solid rgba(137,240,208,0.24);
-      background: linear-gradient(180deg, rgba(137,240,208,0.09), rgba(255,255,255,0.03));
+    .quote {
+      border-left: 3px solid var(--accent);
+      padding-left: 18px;
+      color: var(--muted);
+      margin: 0;
     }
-    .proof {
-      font-style: italic;
-      color: var(--text);
-      font-size: 1.02rem;
+    .form-shell {
+      border: 1px solid rgba(124,156,255,.35);
+      background: rgba(124,156,255,.08);
     }
-    .footer-cta {
-      padding: 28px;
-      margin: 18px 0 72px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-    .micro {
-      font-size: 14px;
+    .proof-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,.12);
       color: var(--muted);
     }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.95em;
-      color: #d9e2ff;
+    .proof-label.raw { color: #ffdca8; border-color: rgba(255,220,168,.28); }
+    .proof-label.generic { color: #ffb3c7; border-color: rgba(255,179,199,.28); }
+    .proof-label.voice { color: var(--accent-2); border-color: rgba(158,240,208,.35); }
+    .proof-panel p:last-child { margin-bottom: 0; }
+    .proof-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
     }
-    @media (max-width: 960px) {
-      .hero-grid, .grid-3, .steps, .faq, .kpis { grid-template-columns: 1fr; }
-      .hero { padding-top: 44px; }
-      .footer-cta { align-items: flex-start; }
+    .form-shell ol { margin: 0; padding-left: 22px; }
+    .section-divider {
+      border: 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+      margin: 0;
+    }
+    /* Proof example tabs */
+    .proof-examples { margin-top: 32px; }
+    .proof-example + .proof-example { margin-top: 36px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,.06); }
+    .proof-example-label {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: rgba(124,156,255,.12);
+      color: var(--accent);
+      border: 1px solid rgba(124,156,255,.2);
+    }
+    .annotation-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      font-size: .9rem;
+    }
+    .annotation-table th,
+    .annotation-table td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      vertical-align: top;
+    }
+    .annotation-table th {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .annotation-table td { color: var(--muted); }
+    /* FAQ */
+    .faq-list { display: grid; gap: 14px; }
+    .faq-item {
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      background: rgba(255,255,255,.025);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      padding: 18px 22px;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 1.3rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform .2s;
+    }
+    .faq-item[open] summary::after { content: "-"; }
+    .faq-answer {
+      padding: 0 22px 18px;
+      color: var(--muted);
+    }
+    .faq-answer p { margin: 0 0 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    /* Pathway */
+    .pathway {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 20px;
+    }
+    .pathway-card {
+      position: relative;
+      background: rgba(18,25,51,.76);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.22);
+    }
+    .pathway-card.recommended {
+      border-color: rgba(158,240,208,.4);
+      box-shadow: 0 0 40px rgba(158,240,208,.06), 0 20px 50px rgba(0,0,0,.22);
+    }
+    .pathway-badge {
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      background: var(--accent-2);
+      color: #082419;
+    }
+    .pathway-card h3 { margin-bottom: 8px; }
+    .pathway-card .pathway-desc {
+      color: var(--muted);
+      font-size: .95rem;
+      margin-bottom: 14px;
+    }
+    .pathway-card ul { margin: 0; font-size: .93rem; color: var(--muted); }
+    footer {
+      padding: 36px 0 56px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    @media (max-width: 860px) {
+      .hero-grid, .grid-2, .cards, .proof-grid, .proof-stack, .kpis, .pathway { grid-template-columns: 1fr; }
+      .hero { padding-top: 48px; }
     }
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <div class="pill">Proof-first founder voice preservation for SaaS and expert teams</div>
-        <h1>Turn founder notes into content that still sounds like the founder.</h1>
-        <p class="lead">Most founder-led teams do not have an ideas problem. They have a format-conversion problem. The best material is trapped in voice notes, podcast clips, sales-call explanations, webinar answers, rough memos, and half-finished drafts. The Founder Voice Audit starts by proving whether that voice can survive the workflow.</p>
+      <div>
+        <div class="eyebrow">Founder Voice Audit + Sample Rewrite</div>
+        <h1>Turn rough founder thinking into content that still sounds like the founder.</h1>
+        <p class="lead">Most founder-led teams do not have an ideas problem. They have a workflow problem. This offer turns voice notes, interviews, webinars, and rough internal thinking into publishable posts and newsletters without flattening the founder into generic startup copy.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="mailto:kairosu.claw@gmail.com?subject=Founder%20Voice%20Audit%20Request&body=Hi%2C%0A%0AI%27d%20like%20to%20request%20a%20Founder%20Voice%20Audit%20%2B%20Sample%20Rewrite.%0A%0ACompany%3A%0AWebsite%3A%0AWhat%20source%20material%20we%20already%20have%3A%0AWhat%20content%20we%20want%20most%3A%0AOur%20biggest%20bottleneck%3A%0A%0ARepresentative%20source%20item%20or%20link%3A%0A">Request the Audit + Sample Rewrite</a>
-          <a class="btn btn-secondary" href="#what-you-get">See what you get</a>
+          <a class="btn btn-primary" href="#request">Get the Audit + Sample Rewrite</a>
+          <a class="btn btn-secondary" href="#proof">See the proof</a>
         </div>
-        <p class="micro">No long brief required. Best fit: founder-led SaaS and expert businesses with existing voice notes, calls, webinars, transcripts, or writing samples.</p>
-        <div class="kpis">
-          <div class="stat">
-            <strong>Audit first</strong>
-            <span class="micro">Prove voice preservation before proposing a sprint or retainer.</span>
-          </div>
-          <div class="stat">
-            <strong>Sample rewrite</strong>
-            <span class="micro">Use the founder’s own raw material so the result is inspectable.</span>
-          </div>
-          <div class="stat">
-            <strong>Built for messy inputs</strong>
-            <span class="micro">Voice notes, podcasts, transcripts, memos, and rough writing all count.</span>
-          </div>
-        </div>
+        <p class="meta">Low-friction first step. No long brief. No retainer commitment upfront. Delivered in a few business days.</p>
       </div>
-      <aside class="hero-card">
-        <div>
-          <span class="eyebrow">Why this works</span>
-          <h3>Not generic AI ghostwriting.</h3>
-          <p class="proof">The first job is not “publish more.” It is proving the founder’s rhythm, phrasing, sharp edges, and way of explaining things can make it through the drafting process without getting flattened into anonymous startup copy.</p>
-        </div>
-        <div class="panel" style="padding:20px; margin-top: 18px; background: rgba(255,255,255,0.03);">
-          <span class="eyebrow">Entry offer</span>
-          <h3>Founder Voice Audit + Sample Rewrite</h3>
-          <ul class="checklist">
-            <li>voice-marker breakdown</li>
-            <li>3–5 traits or phrases worth preserving</li>
-            <li>common generic-draft failure modes</li>
-            <li>one sample rewrite from your material</li>
-            <li>recommendation: stop, sprint, or retainer</li>
-          </ul>
+      <aside class="panel">
+        <h3>What you get in the audit</h3>
+        <ul>
+          <li>A short voice-marker breakdown</li>
+          <li>3 to 5 phrases, habits, or tonal moves worth preserving</li>
+          <li>Generic-draft failure points to avoid</li>
+          <li>One sample rewrite from the founder's own source material</li>
+          <li>A recommendation on whether a Voice Calibration Sprint is worth doing now</li>
+        </ul>
+        <div class="kpis">
+          <div class="kpi"><strong>Proof first</strong><span>Audit before sprint or retainer.</span></div>
+          <div class="kpi"><strong>Uses real material</strong><span>Voice notes, podcasts, memos, transcripts.</span></div>
+          <div class="kpi"><strong>Built for busy teams</strong><span>More throughput without more founder writing time.</span></div>
         </div>
       </aside>
     </div>
@@ -233,143 +305,295 @@
 
   <main>
     <section>
-      <div class="wrap">
-        <span class="eyebrow">The problem</span>
-        <h2>Most founder content breaks between the idea and the draft.</h2>
-        <div class="grid-3">
-          <div class="card">
-            <h3>The useful material already exists.</h3>
-            <p>It lives in off-the-cuff explanations, internal memos, customer-call riffs, and scraps that nobody has time to turn into publishable writing.</p>
-          </div>
-          <div class="card">
-            <h3>Teams usually pick one of two bad options.</h3>
-            <p>Ask the founder to write everything from scratch, or outsource it and get content that is polished but interchangeable.</p>
-          </div>
-          <div class="card">
-            <h3>That is where cadence dies.</h3>
-            <p>The audience gets competent posts with no point of view, and the founder quietly stops trusting the process.</p>
-          </div>
+      <div class="wrap grid-2">
+        <div>
+          <h2>Most founder content breaks between the idea and the draft.</h2>
+          <p>The useful material already exists. It lives in voice notes recorded between meetings, sales-call explanations that are better than the homepage, webinar answers, internal memos, and half-written posts nobody had time to finish.</p>
+          <p>Then the business usually chooses one of two bad options: ask the founder to write everything from scratch, or outsource it and get clean but forgettable ghostwritten content.</p>
         </div>
-      </div>
-    </section>
-
-    <section id="what-you-get">
-      <div class="wrap">
-        <span class="eyebrow">What you get</span>
-        <h2>A low-friction proof layer before any larger engagement.</h2>
-        <div class="grid-3">
-          <div class="card offer">
-            <h3>1. Founder Voice Audit</h3>
-            <p>A short analysis of how the founder actually sounds on the page: what they repeat, avoid, emphasize, and naturally return to.</p>
-          </div>
-          <div class="card offer">
-            <h3>2. Failure-mode map</h3>
-            <p>Clear notes on where generic ghostwriting would likely flatten the message, tone, or perspective.</p>
-          </div>
-          <div class="card offer">
-            <h3>3. Sample rewrite</h3>
-            <p>One before-and-after rewrite from the founder’s own material so the buyer can judge fit with their eyes open.</p>
-          </div>
+        <div class="panel">
+          <h3>Common raw material</h3>
+          <ul>
+            <li>Voice notes</li>
+            <li>Podcast or webinar recordings</li>
+            <li>Internal memos or notes</li>
+            <li>Customer call transcripts</li>
+            <li>Past writing that still sounds right</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section>
       <div class="wrap">
-        <span class="eyebrow">How the offer ladder works</span>
-        <h2>Audit first. Sprint second. Retainer only if the voice holds.</h2>
-        <div class="steps">
-          <div class="step">
-            <h3>01 — Submit a small batch</h3>
-            <p>Send voice notes, podcast clips, transcripts, webinar excerpts, or rough writing.</p>
+        <h2>What makes this different</h2>
+        <div class="cards">
+          <div class="panel">
+            <h3>Not generic AI ghostwriting</h3>
+            <p>This workflow starts by mapping how the founder actually sounds on the page: what they repeat, what they avoid, how they explain difficult ideas, and where they sound sharp, skeptical, playful, or precise.</p>
           </div>
-          <div class="step">
-            <h3>02 — Inspect the audit</h3>
-            <p>Get voice markers, preserved traits, failure-mode notes, and one sample rewrite.</p>
+          <div class="panel">
+            <h3>Concrete proof, not vague promises</h3>
+            <p>The buyer does not have to imagine the result. They can inspect the voice markers, the anti-patterns, and a sample rewrite from their own material before committing to a larger engagement.</p>
           </div>
-          <div class="step">
-            <h3>03 — Decide if a sprint is worth it</h3>
-            <p>If the sample feels right, move into a Voice Calibration Sprint with multiple drafts and one revision pass.</p>
-          </div>
-          <div class="step">
-            <h3>04 — Scale only after proof</h3>
-            <p>Use a retainer for recurring thought leadership only once the workflow is clearly working.</p>
+          <div class="panel">
+            <h3>Built for throughput</h3>
+            <p>The goal is a repeatable system that preserves personality while increasing publishing cadence across posts, essays, newsletters, and founder memos.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
+    <!-- PROOF SECTION — expanded with multiple examples -->
+    <section id="proof">
       <div class="wrap">
-        <span class="eyebrow">Best-fit buyers</span>
-        <h2>Who this is for — and who it is not for.</h2>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Best fit</h3>
-            <ul>
-              <li>Founder-led SaaS companies with active GTM motion</li>
-              <li>Expert businesses with strong ideas and inconsistent publishing</li>
-              <li>Teams that already have raw material but weak editorial conversion</li>
-            </ul>
+        <h2>What voice preservation actually looks like</h2>
+        <p class="lead">The easiest way to judge this offer is not by trusting claims. It is by comparing the same idea in three forms: rough founder material, the generic version most workflows drift toward, and a sharper rewrite that still sounds tied to a real person.</p>
+
+        <div class="proof-examples">
+          <!-- Example 1: Content workflow -->
+          <div class="proof-example">
+            <span class="proof-example-label">Example 1 &mdash; Voice note about content workflow</span>
+            <div class="proof-stack">
+              <div class="panel proof-panel">
+                <span class="proof-label raw">Raw founder note</span>
+                <p>We keep seeing teams buy tools because they want a faster content engine, but that is not really the first bottleneck. Usually the issue is they do not have a reliable way to turn what the founder already says in calls and notes into drafts anybody can ship. People keep treating this like an idea shortage when it is mostly a workflow shortage.</p>
+              </div>
+              <div class="panel proof-panel">
+                <span class="proof-label generic">Generic cleaned-up draft</span>
+                <p>Many companies struggle with content because they lack a scalable process. While tools can improve efficiency, the real challenge is often operational alignment. Businesses should focus on converting internal knowledge into external content more consistently.</p>
+              </div>
+              <div class="panel proof-panel">
+                <span class="proof-label voice">Voice-faithful rewrite</span>
+                <p>A lot of teams buy content tools as if the missing piece is idea generation.</p>
+                <p>It usually is not.</p>
+                <p>The real bottleneck is operational: the founder is already saying useful things in calls, notes, and off-the-cuff explanations, but the business has no reliable way to turn that raw material into drafts somebody can actually publish.</p>
+                <p>Most of the time it is a conversion problem, not a creativity problem.</p>
+              </div>
+            </div>
+            <table class="annotation-table">
+              <thead><tr><th>Decision</th><th>Generic draft</th><th>Voice-faithful draft</th><th>Why it matters</th></tr></thead>
+              <tbody>
+                <tr><td>Framing</td><td>"Lack a scalable process"</td><td>"Conversion problem, not a creativity problem"</td><td>Preserves the founder's skeptical reframe instead of flattening it into consultant language.</td></tr>
+                <tr><td>Rhythm</td><td>Long compound sentences</td><td>Short declarative lines with a pivot</td><td>The founder thinks in sharp bursts. That rhythm is the voice.</td></tr>
+              </tbody>
+            </table>
           </div>
-          <div class="card">
-            <h3>Bad fit</h3>
-            <ul>
-              <li>Teams with no source material to calibrate against</li>
-              <li>Buyers looking for anonymous SEO volume</li>
-              <li>Founders unwilling to review even one calibration pass</li>
-            </ul>
+
+          <!-- Example 2: Hiring -->
+          <div class="proof-example">
+            <span class="proof-example-label">Example 2 &mdash; Voice note about hiring</span>
+            <div class="proof-stack">
+              <div class="panel proof-panel">
+                <span class="proof-label raw">Raw founder note</span>
+                <p>We keep hiring senior engineers who are technically brilliant but cannot explain what they're building to anyone outside engineering. And I'm tired of being the translation layer. Every board meeting, every customer call, every investor update &mdash; I'm the one converting engineering work into business language. That's not a founder problem. That's a communication architecture problem.</p>
+              </div>
+              <div class="panel proof-panel">
+                <span class="proof-label generic">Generic cleaned-up draft</span>
+                <p>At fast-growing companies, one of the biggest challenges is finding engineers who can bridge the gap between technical and business stakeholders. Strong communication skills are becoming just as important as technical expertise. Leaders should prioritize hiring engineers who can articulate complex technical concepts in business-friendly terms.</p>
+              </div>
+              <div class="panel proof-panel">
+                <span class="proof-label voice">Voice-faithful rewrite</span>
+                <p>We keep hiring senior engineers who are technically excellent but cannot explain what they are building to anyone outside their team.</p>
+                <p>So the founder becomes the translator. Board meetings, customer calls, investor updates &mdash; same person converting engineering output into language the rest of the business can act on.</p>
+                <p>That is not a leadership problem. It is a communication architecture problem.</p>
+                <p>The fix is not "teach engineers to present better." It is hiring people who can hold both contexts without needing a founder in the middle every time.</p>
+              </div>
+            </div>
+            <table class="annotation-table">
+              <thead><tr><th>Decision</th><th>Generic draft</th><th>Voice-faithful draft</th><th>Why it matters</th></tr></thead>
+              <tbody>
+                <tr><td>Hook</td><td>Abstract advice ("leaders should prioritize...")</td><td>Direct frustration ("I'm tired of being the translation layer")</td><td>The founder's irritation is the hook. Removing it makes the post forgettable.</td></tr>
+                <tr><td>Vocabulary</td><td>"Cross-functional alignment"</td><td>"Communication architecture problem"</td><td>The founder uses precise, slightly unusual phrasing. That is the voice.</td></tr>
+                <tr><td>Point of view</td><td>Third-person advice</td><td>First-person operator experience</td><td>The audience follows this founder for their perspective, not generic management tips.</td></tr>
+              </tbody>
+            </table>
           </div>
-          <div class="card">
-            <h3>Strong first use cases</h3>
-            <ul>
-              <li>LinkedIn post drafts</li>
-              <li>Operator memos and short essays</li>
-              <li>Newsletter drafts built from calls, notes, or interviews</li>
-            </ul>
+
+          <!-- Example 3: Pricing -->
+          <div class="proof-example">
+            <span class="proof-example-label">Example 3 &mdash; Podcast clip about pricing</span>
+            <div class="proof-stack">
+              <div class="panel proof-panel">
+                <span class="proof-label raw">Raw founder note</span>
+                <p>Everyone tells you to raise your prices. That advice is correct and also useless. The reason most founders underprice is not that they don't know they should charge more. It's that they don't have a way to explain the price that feels honest. Like, you can feel when you're bullshitting. Your buyer can feel it too.</p>
+              </div>
+              <div class="panel proof-panel">
+                <span class="proof-label generic">Generic cleaned-up draft</span>
+                <p>Many founders struggle with pricing. While experts often recommend higher price points, implementation remains challenging. The key is developing a clear value narrative that justifies your pricing to customers. By articulating the specific outcomes and ROI your product delivers, you can confidently raise prices while maintaining customer trust.</p>
+              </div>
+              <div class="panel proof-panel">
+                <span class="proof-label voice">Voice-faithful rewrite</span>
+                <p>Everyone tells founders to raise their prices. That advice is correct and also useless.</p>
+                <p>The reason most founders underprice is not ignorance. It is that they do not have a way to explain the price that feels honest.</p>
+                <p>You can feel when you are bullshitting a number. The buyer can feel it too.</p>
+                <p>So the actual bottleneck is not a pricing model or a value metric. It is the language around the price. That is a writing problem, not a spreadsheet problem.</p>
+              </div>
+            </div>
+            <table class="annotation-table">
+              <thead><tr><th>Decision</th><th>Generic draft</th><th>Voice-faithful draft</th><th>Why it matters</th></tr></thead>
+              <tbody>
+                <tr><td>Opening</td><td>"Many founders struggle..."</td><td>"Correct and also useless"</td><td>The founder's edge is in the juxtaposition. That line is the post.</td></tr>
+                <tr><td>Tone</td><td>Consultative, safe</td><td>Conversational, slightly confrontational</td><td>This founder does not give polite advice. They name uncomfortable truths.</td></tr>
+                <tr><td>Insight</td><td>Standard ROI framing</td><td>"A writing problem, not a spreadsheet problem"</td><td>The founder reframes the category. That reframe is the thought leadership.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="proof-note" style="margin-top: 28px;">
+          <strong>What the buyer gets:</strong> this same kind of comparison from their own source material &mdash; not a blind retainer pitch, and not a promise they have to take on faith.
+          <div class="cta-row" style="margin-bottom:0;">
+            <a class="btn btn-primary" href="#request">Get the Audit + Sample Rewrite</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
+    <hr class="section-divider">
+
+    <!-- PATHWAY: Audit → Sprint → Retainer -->
+    <section id="pathway">
       <div class="wrap">
-        <span class="eyebrow">FAQ</span>
-        <h2>Reasonable questions before you ask for the audit.</h2>
-        <div class="faq">
-          <div class="faq-item">
-            <h3>What do you need from us?</h3>
-            <p>A small batch of real source material: voice notes, transcript excerpts, webinar clips, podcast audio, or existing writing.</p>
+        <h2>How the engagement works</h2>
+        <p class="lead">Start small. See proof. Scale only if it works. No commitment required beyond the audit.</p>
+        <div class="pathway">
+          <div class="pathway-card recommended">
+            <span class="pathway-badge">Start here</span>
+            <h3>Founder Voice Audit + Sample Rewrite</h3>
+            <p class="pathway-desc">The proof step. See whether the voice survives the workflow before any larger engagement.</p>
+            <ul>
+              <li>Voice-marker breakdown</li>
+              <li>Generic-draft failure points</li>
+              <li>One sample rewrite from your material</li>
+              <li>Sprint recommendation</li>
+            </ul>
           </div>
-          <div class="faq-item">
-            <h3>Is this a retainer?</h3>
-            <p>No. The point of the audit is to make the next decision smaller and more rational, not to force a long commitment early.</p>
+          <div class="pathway-card">
+            <h3>Voice Calibration Sprint</h3>
+            <p class="pathway-desc">A focused batch that builds the voice system and produces real publishable content.</p>
+            <ul>
+              <li>Founder voice intake (3 to 5 source items)</li>
+              <li>Documented voice brief with tone markers</li>
+              <li>5 short-form post drafts</li>
+              <li>1 newsletter or memo draft</li>
+              <li>Revision pass and cadence recommendation</li>
+            </ul>
           </div>
-          <div class="faq-item">
-            <h3>What if the sample rewrite misses?</h3>
-            <p>That is still useful. It reveals whether the source material is too weak, the workflow is off, or a bigger engagement would be premature.</p>
+          <div class="pathway-card">
+            <h3>Ongoing Retainer</h3>
+            <p class="pathway-desc">Sustained publishing throughput with the voice system already calibrated.</p>
+            <ul>
+              <li>Regular content from raw founder material</li>
+              <li>Voice brief maintained and refined</li>
+              <li>Consistent cadence across posts, newsletters, and memos</li>
+              <li>Revision cycles built in</li>
+            </ul>
           </div>
-          <div class="faq-item">
-            <h3>How do we start?</h3>
-            <p>Use the email link below and send one representative source item or a link to it. A short note about your biggest publishing bottleneck helps.</p>
+        </div>
+        <p class="meta" style="margin-top:20px; text-align:center;">Pricing is scoped per engagement based on volume and format. The audit is designed as a low-cost proof step &mdash; not a loss leader.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="pilot">
+      <div class="wrap proof-grid">
+        <div>
+          <h2>What a pilot sprint includes</h2>
+          <div class="steps">
+            <div class="step"><strong>Founder voice intake</strong><br>Review 3 to 5 source items that already sound like the founder.</div>
+            <div class="step"><strong>Voice brief</strong><br>Document tone markers, signature phrases, and anti-patterns that make drafts sound generic.</div>
+            <div class="step"><strong>Content pack</strong><br>Produce 5 short-form post drafts and 1 newsletter or memo draft.</div>
+            <div class="step"><strong>Revision pass</strong><br>Refine the direction based on feedback and recommend a sustainable cadence.</div>
           </div>
+        </div>
+        <div class="panel">
+          <h3>Why this matters now</h3>
+          <p>Language models are finally good enough to help preserve nuance when there is real source material to work from. That makes founder-led publishing much more practical for teams that already have strong ideas but inconsistent execution.</p>
+          <blockquote class="quote">The hard part is not generating polished paragraphs. The hard part is keeping the founder's rhythm, worldview, and sharp edges intact.</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <h2>Questions skeptical buyers usually ask</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>How is this different from hiring a ghostwriter?</summary>
+            <div class="faq-answer">
+              <p>Most ghostwriters start from a brief or a topic list. This workflow starts from raw founder material &mdash; voice notes, transcripts, memos &mdash; and maps how the founder actually sounds before producing anything. The difference is measurable: a generic ghostwriter drifts toward interchangeable startup prose. This process preserves rhythm, vocabulary, and point of view.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Does this use AI? Will it sound like AI?</summary>
+            <div class="faq-answer">
+              <p>Language models are part of the editorial workflow, but they are not the product. The product is voice-faithful content. AI helps with speed and consistency; the voice brief and editorial judgment keep the output from sounding like generic AI text. The proof step exists precisely so you can judge this before committing.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>What material do I need to send?</summary>
+            <div class="faq-answer">
+              <p>A small batch of anything that already sounds like the founder: a voice note, a podcast clip, a few internal messages, a transcript excerpt, or a piece of past writing you still like. Two to three items is enough for the audit. The more natural and unedited, the better.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>What if the audit shows it does not work for us?</summary>
+            <div class="faq-answer">
+              <p>That is a valid outcome. The audit is designed to surface mismatches early. If the source material is too thin, or the founder's voice is not distinct enough to preserve meaningfully, the audit will say so rather than upsell into a sprint that will not land.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>How long does the audit take?</summary>
+            <div class="faq-answer">
+              <p>Typically a few business days after receiving the source material. There is no long intake process or multi-week timeline. The goal is a fast proof point, not a research project.</p>
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary>Do I have to commit to a sprint or retainer afterward?</summary>
+            <div class="faq-answer">
+              <p>No. The audit is a standalone deliverable. If the proof is strong and the fit is clear, a sprint conversation makes sense. If not, you keep the audit and sample rewrite with no further obligation.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="request">
+      <div class="wrap grid-2">
+        <div>
+          <h2>Start with a founder voice audit and sample rewrite.</h2>
+          <p>Send a small batch of voice notes, podcast clips, or past writing. The audit maps the voice, shows where generic ghostwriting would likely fail, and returns a sample rewrite from your own material so you can judge the fit before a sprint or retainer.</p>
+          <p class="meta">Suggested first source item: a voice note, podcast clip, writing sample, or transcript excerpt.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:kairosu.claw@gmail.com?subject=Founder%20Voice%20Audit%20Request&body=Company%3A%0AWebsite%3A%0ARaw%20material%20available%20(voice%20notes%2C%20podcasts%2C%20writing)%3A%0APublishing%20goal%3A%0ABiggest%20content%20bottleneck%3A%0A">Send a Quick Email to Start</a>
+          </div>
+        </div>
+        <div class="panel form-shell">
+          <h3>Suggested intake fields</h3>
+          <ol>
+            <li>What kind of raw material do you already have?</li>
+            <li>How often do you want to publish?</li>
+            <li>Who currently owns content approvals?</li>
+            <li>What is your biggest content bottleneck?</li>
+            <li>Share one representative source item we should evaluate first.</li>
+            <li>Email address</li>
+          </ol>
+          <p class="meta">We review a small batch of source material and return the audit within a few business days.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <div class="wrap">
-    <div class="panel footer-cta">
-      <div>
-        <span class="eyebrow">Next step</span>
-        <h2 style="margin-bottom:10px;">Request the Founder Voice Audit + Sample Rewrite</h2>
-        <p>Best first step if your team has ideas, raw material, and distribution intent — but not a reliable way to turn that material into publishable drafts that still feel like the founder.</p>
-        <p class="micro">Contact path: <code>kairosu.claw@gmail.com</code></p>
-      </div>
-      <div class="cta-row" style="margin:0;">
-        <a class="btn btn-primary" href="mailto:kairosu.claw@gmail.com?subject=Founder%20Voice%20Audit%20Request&body=Hi%2C%0A%0AI%27d%20like%20to%20request%20a%20Founder%20Voice%20Audit%20%2B%20Sample%20Rewrite.%0A%0ACompany%3A%0AWebsite%3A%0AWhat%20source%20material%20we%20already%20have%3A%0AWhat%20content%20we%20want%20most%3A%0AOur%20biggest%20bottleneck%3A%0A%0ARepresentative%20source%20item%20or%20link%3A%0A">Start by email</a>
-      </div>
+  <footer>
+    <div class="wrap">
+      <strong>Founder Voice Audit</strong><br>
+      A proof-first service for founder-led SaaS and expert businesses.
     </div>
-  </div>
+  </footer>
 </body>
 </html>
